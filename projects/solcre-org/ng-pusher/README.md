@@ -1,8 +1,28 @@
 # NgPusher
 Solcre library to package all the functionalities of PusherJS.
 
-## Example
-Put this code in app inits or before pusherjs code
+## Init
+Import in module.ts the NgPusher module.
+``` js
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppComponent } from './app.component';
+import { NgPusherModule } from '@solcre-org/ng-pusher';
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [
+	BrowserModule,
+	NgPusherModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
+Put this code in app_initializer or before pusherjs code
 
 ``` js
 ...
