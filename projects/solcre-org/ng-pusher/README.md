@@ -1,24 +1,34 @@
 # NgPusher
+Solcre library to package all the functionalities of PusherJS.
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.4.
+## Example
+Put this code in app inits or before pusherjs code
 
-## Code scaffolding
+``` js
+...
+this.pusherService.createClient({
+	apiKey: '', // Put your apiKey
+	apiCluster: '' //Put your api cluster name
+});
+...
+```
 
-Run `ng generate component component-name --project ng-pusher` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ng-pusher`.
-> Note: Don't forget to add `--project ng-pusher` or else it will be added to the default project in your `angular.json` file. 
+In the code:
+``` js
+const channelName: string = 'CHANNEL-NAME'; // In users case meaybe put @ID in the ends
 
-## Build
+//Pusher bind
+this.pusherSubscriber = this.pusherService.bindEvent(channelName, 'CHANNEL-EVENT-NAME', (data: any) => {
+	// This code is called from the server
+});
+```
 
-Run `ng build ng-pusher` to build the project. The build artifacts will be stored in the `dist/` directory.
+``` js
+//IMPORTANT: Pusher unbind (on component destroy)
+if(this.pusherSubscriber){
+	const channelName: string = 'CHANNEL-NAME'; 
 
-## Publishing
-
-After building your library with `ng build ng-pusher`, go to the dist folder `cd dist/ng-pusher` and run `npm publish`.
-
-## Running unit tests
-
-Run `ng test ng-pusher` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+	//Pusher unbind
+	this.pusherService.unbindEvent(channelName, this.pusherSubscriber);
+}
+```

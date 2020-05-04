@@ -25,17 +25,15 @@ export class PusherService {
 		this.config = {};
 	}
 
-	//Set config
-	public setConfig(congi: PusherOptionsInterface): void {
-		this.config = this.config;
-	}
-
 	//Create client
-	public createClient() {
+	public createClient(config: PusherOptionsInterface) {
 		//Check recreate client
 		if (this.client) {
 			return;
 		}
+
+		//Load config
+		this.config = config;
 
 		//Create client
 		this.client = new Pusher(this.config.apiKey, {
