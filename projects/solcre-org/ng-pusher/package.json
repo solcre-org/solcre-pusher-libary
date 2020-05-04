@@ -1,0 +1,12 @@
+{
+  "name": "@solcre-org/ng-pusher",
+  "version": "1.0.0",
+  "peerDependencies": {
+    "@angular/common": "^9.1.4",
+    "@angular/core": "^9.1.4",
+    "tslib": "^1.10.0"
+  },
+  "dependencies": {
+    "pusher-js": "^6.0.2"
+  }
+}
